@@ -1,0 +1,27 @@
+name: open_pull_ex
+on: 
+  workflow_dispatch:
+   inputs: 
+      language:
+        description: 'Language'
+        required: true
+        default: text
+        type: choice
+        options:
+        - text 
+        - python
+        - fortran
+permissions: write-all
+jobs:
+  create-pulls:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Language: ${{ inputs.language }}"
+      # checkout repo
+     # - uses: actions/checkout@v3
+     #   
+     # - name: create pull request for exercise 1
+     #   run: gh pr create -B main -H text_pull --title 'Exercise 1. Text' --body 'Created by Github action'
+     #   env:
+     #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
